@@ -21,13 +21,13 @@ function exibirResultado(contador) {
 }
 
 function contadadorMultiplos() {
-    let numero1 = document.getElementById('numero1');
-    let numero2 = document.getElementById('numero2');
+    let numeroInput1 = document.getElementById('numero1');
+    let numeroInput2 = document.getElementById('numero2');
 
-    if ((numero1 instanceof HTMLInputElement) && 
-    (numero2 instanceof HTMLInputElement)) {
-        let num1 = parseInt(numero1.value);
-        let num2 = parseInt(numero2.value);
+    if ((numeroInput1 instanceof HTMLInputElement) && 
+    (numeroInput2 instanceof HTMLInputElement)) {
+        let num1 = parseInt(numeroInput1.value);
+        let num2 = parseInt(numeroInput2.value);
 
         try {
             if (isNaN(num1) || isNaN(num2)) {
@@ -45,9 +45,9 @@ function contadadorMultiplos() {
             console.log(num1)
             console.log(num2)
 
-            const calculo = (n1, n2) => {
-                let maior = Math.max(n1, n2)
-                let menor = Math.min(n1, n2);
+            const calculo = (numero1, numero2) => {
+                let maior = Math.max(numero1, numero2) + 1;
+                let menor = Math.min(numero1, numero2) - 1;
                 let contador = 0;
 
                 for (let i = menor + 1; i < maior; i++) {
@@ -56,7 +56,7 @@ function contadadorMultiplos() {
                     }
                 }
 
-                return contador + 2;
+                return contador;
             }
 
             let resultadoFinal = calculo(num1, num2);
