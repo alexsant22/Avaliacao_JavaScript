@@ -12,13 +12,13 @@ function configurar() {
         }
 }
 
-/* function exibirResultado() {
+function exibirResultado(contador) {
     let resultado = document.getElementById('resultado');
 
     if (resultado instanceof HTMLParagraphElement) {
-        resultado.textContent = 
+        resultado.textContent = `O resultado do contador dos multiplos é: ${contador}`;
     }
-} */
+}
 
 function contadadorMultiplos() {
     let numero1 = document.getElementById('numero1');
@@ -30,11 +30,11 @@ function contadadorMultiplos() {
         let num2 = parseInt(numero2.value);
 
         try {
-            if (isNaN(num1) && isNaN(num2)) {
+            if (isNaN(num1) || isNaN(num2)) {
                 throw new Error('Os valores devem ser números válidos.');
             }
 
-            if (num1 < 0 || num2 < 0) {
+            if (num1 <= 0 || num2 <= 0) {
                 throw new Error('Os valores devem ser maiores que 0.');
             }
 
@@ -42,14 +42,27 @@ function contadadorMultiplos() {
                 throw new Error('Os valores não podem ser iguais.');
             }
 
-            const calculo = (n1, n2) => {
-                n1 = num1;
-                n2 = num2;
+            console.log(num1)
+            console.log(num2)
 
-                
+            const calculo = (n1, n2) => {
+                let maior = Math.max(n1, n2)
+                let menor = Math.min(n1, n2);
+                let contador = 0;
+
+                for (let i = menor + 1; i < maior; i++) {
+                    if (i % 5 === 0) {
+                        contador++;
+                    }
+                }
+
+                return contador + 2;
             }
+
+            let resultadoFinal = calculo(num1, num2);
+            exibirResultado(resultadoFinal);
         } catch (error) {
-            alert(`Erro: ${error}`);
+            alert(`Erro: ${error.message}`);
         }
     }
 }
